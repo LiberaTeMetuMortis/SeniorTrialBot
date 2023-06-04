@@ -3,7 +3,8 @@
 * npm
 
 # How to run bot
-* Clone this repository
+* Clone this repository or install it as zip via [this link](https://github.com/LiberaTeMetuMortis/SeniorTrialBot/zipball/master)
+* Extract zip to a folder if you downloaded it as zip
 * Run `npm install` in the directory of the repository
 * Run `npm build` in the directory of the repository
 * Copy `.env.example` file with name `.env` and edit with your secrets
