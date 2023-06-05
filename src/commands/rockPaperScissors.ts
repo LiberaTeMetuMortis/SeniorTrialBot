@@ -18,7 +18,7 @@ export default new Command({
                 .setDescription("You must choose between rock, paper and scissors")
                 .setColor("Red")
             interaction.reply({embeds: [invalidChoiceEmbed]});
-
+            return
         }
         const botChoice = allChoices[Math.floor(Math.random() * allChoices.length)];
         const result = getResult(selectedChoice.toLowerCase(), botChoice);
