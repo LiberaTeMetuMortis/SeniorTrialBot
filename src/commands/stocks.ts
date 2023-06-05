@@ -40,6 +40,6 @@ export default new Command({
             .setDescription(`The price of ${symbol} is ${price}$`)
             .setColor("Green")
         interaction.reply({embeds: [priceEmbed]});
-
+        console.log(`Retrieved data:`, responseJSON)
     }
 })
