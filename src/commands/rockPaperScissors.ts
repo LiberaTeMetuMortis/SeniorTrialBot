@@ -9,24 +9,27 @@ export default new Command({
         description: "Your choice",
         type: "string"
     }],
-    run(interaction) {
+    async run(interaction) {
         const allChoices = ["rock", "paper", "scissors"];
         const selectedChoice = interaction.options.get("choice", true).value as string;
-        if(!allChoices.includes(selectedChoice.toLowerCase())) {
+        if(allChoices.includes(selectedChoice.toLowerCase())) {
+            console.log("It includes the choice")
+            const botChoice = allChoices[Math.floor(Math.random() * allChoices.length)];
+            const result = getResult(selectedChoice.toLowerCase(), botChoice);
+            const resultEmbed = new EmbedBuilder()
+                .setTitle("Rock paper scissors")
+                .setDescription(`You chose ${selectedChoice.toLowerCase()}, I chose ${botChoice}. ${result}`)
+                .setColor("Green")
+            interaction.reply({embeds: [resultEmbed]});
+        }
+        else {
+            console.log("It doesn't include the choice")
             const invalidChoiceEmbed = new EmbedBuilder()
                 .setTitle("Invalid choice")
                 .setDescription("You must choose between rock, paper and scissors")
                 .setColor("Red")
             interaction.reply({embeds: [invalidChoiceEmbed]});
-            return
         }
-        const botChoice = allChoices[Math.floor(Math.random() * allChoices.length)];
-        const result = getResult(selectedChoice.toLowerCase(), botChoice);
-        const resultEmbed = new EmbedBuilder()
-            .setTitle("Rock paper scissors")
-            .setDescription(`You chose ${selectedChoice.toLowerCase()}, I chose ${botChoice}. ${result}`)
-            .setColor("Green")
-        interaction.reply({embeds: [resultEmbed]});
     }
 })
 
